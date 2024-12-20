@@ -1,5 +1,7 @@
 import { useEffect, useReducer } from 'react';
 
+type Updater<T> = (prev: T) => T;
+
 export function useLocalStorage<T>(key: string, initialState: T) {
 	const [, reRender] = useReducer((p) => !p, false);
 
@@ -7,8 +9,13 @@ export function useLocalStorage<T>(key: string, initialState: T) {
 
 	const value = getItem<T>(key) ?? initialState;
 
-	const setValue = (value: T) => {
-		setItem(key, value);
+	const setValue = (valueOrUpdater: T | Updater<T>) => {
+		const newValue =
+			typeof valueOrUpdater === 'function'
+				? (valueOrUpdater as Updater<T>)(value)
+				: valueOrUpdater;
+
+		setItem(key, newValue);
 	};
 
 	return [value, setValue] as const;

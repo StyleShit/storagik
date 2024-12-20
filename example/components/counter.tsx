@@ -9,14 +9,14 @@ export function Counter({ title }: { title: string }) {
 			<p>Count: {count}</p>
 			<button
 				onClick={() => {
-					setCount(count + 1);
+					setCount((prev) => prev + 1);
 				}}
 			>
 				Increment
 			</button>
 			<button
 				onClick={() => {
-					setCount(count - 1);
+					setCount((prev) => prev - 1);
 				}}
 			>
 				Decrement
