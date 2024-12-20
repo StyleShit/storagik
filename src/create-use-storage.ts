@@ -7,7 +7,15 @@ export function createUseStorage(storageArea: Storage) {
 	const getItem = <T>(key: string): T | null => {
 		const value = storageArea.getItem(key);
 
-		return value ? (JSON.parse(value) as T) : null;
+		if (value === null) {
+			return null;
+		}
+
+		try {
+			return JSON.parse(value) as T;
+		} catch {
+			return null;
+		}
 	};
 
 	const setItem = (key: string, value: unknown) => {

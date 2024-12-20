@@ -49,7 +49,18 @@ describe.each([
 		expect(result.current[0]).toBe('stored-value');
 	});
 
-	it.todo('should return the initial value when the stored value is invalid');
+	it('should return the initial value when the stored value is invalid', () => {
+		// Arrange.
+		storage.setItem('test', '{ broken-json }');
+
+		// Act.
+		const { result } = renderHook(() =>
+			useStorage('test', 'initial-value'),
+		);
+
+		// Assert.
+		expect(result.current[0]).toBe('initial-value');
+	});
 
 	it('should update the value in the storage when the value is updated', () => {
 		// Act.
