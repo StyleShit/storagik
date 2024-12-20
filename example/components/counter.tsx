@@ -1,7 +1,12 @@
 import { useLocalStorage } from '../../src';
 
-export function Counter({ title }: { title: string }) {
-	const [count, setCount] = useLocalStorage('count', 0);
+type CounterProps = {
+	title: string;
+	storageKey: string;
+};
+
+export function Counter({ title, storageKey }: CounterProps) {
+	const [count, setCount] = useLocalStorage(storageKey, 0);
 
 	return (
 		<div style={{ backgroundColor: '#EEE', padding: '10px' }}>
