@@ -1,19 +1,19 @@
 # Storagik
 
-Tiny package to interact with the browser's storage using React.
+Tiny package (~500 Bytes gzipped) to interact with the browser's storage using React.
 
-## installation
+## Installation
 
 ```bash
-npm install storagik
+npm i storagik
 ```
 
 ## Usage
 
-Storagik exposes `useLocalStorage` and `useSessionStorage` hooks to interact with the browser's storage.
+Storagik exposes `useLocalStorage` and `useSessionStorage` hooks to interact with the browser's storage reactively.
 
 The API of both hooks is similar to React's `useState` hook - They give you a tuple of a value and a setter function,
-and have an additional parameter to set the key for the storage:
+accept an initial value, and have an additional parameter to set the key for the storage:
 
 ```tsx
 import { useLocalStorage } from 'storagik';

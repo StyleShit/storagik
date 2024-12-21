@@ -1,6 +1,6 @@
 {
 	"name": "storagik",
-	"description": "Tiny package to interact with the browser's storage using React",
+	"description": "Tiny package (~500 Bytes gzipped) to interact with the browser's storage using React",
 	"version": "0.0.1",
 	"author": "StyleShit",
 	"license": "MIT",
