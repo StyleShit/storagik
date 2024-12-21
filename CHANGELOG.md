@@ -1,5 +1,12 @@
 # storagik
 
+## 0.0.2
+
+### Patch Changes
+
+- 0bcb545: Fix `exports` field to support type imports
+- 5f736b2: Update docs and package description
+
 ## 0.0.1
 
 ### Patch Changes
