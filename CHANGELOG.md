@@ -1,5 +1,12 @@
 # storagik
 
+## 0.0.3
+
+### Patch Changes
+
+- 969c36a: Refactor `createUseStorage`
+- 4ce3a4d: Use storages from global variable
+
 ## 0.0.2
 
 ### Patch Changes
