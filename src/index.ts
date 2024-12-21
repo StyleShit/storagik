@@ -1,5 +1,5 @@
 import { createUseStorage } from './create-use-storage';
 
-export const useLocalStorage = createUseStorage(localStorage);
+export const useLocalStorage = createUseStorage(window.localStorage);
 
-export const useSessionStorage = createUseStorage(sessionStorage);
+export const useSessionStorage = createUseStorage(window.sessionStorage);
