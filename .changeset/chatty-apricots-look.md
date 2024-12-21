@@ -1,5 +1,0 @@
----
-'storagik': patch
----
-
-Refactor `createUseStorage`
