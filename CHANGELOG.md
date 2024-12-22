@@ -1,5 +1,11 @@
 # storagik
 
+## 0.0.4
+
+### Patch Changes
+
+- 325ed5d: Fix setter function passes the wrong previous value
+
 ## 0.0.3
 
 ### Patch Changes
