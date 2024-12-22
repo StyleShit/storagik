@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { act } from 'react';
-import { renderHook } from '@testing-library/react';
+import { render, renderHook, screen } from '@testing-library/react';
 import { afterEach, describe, expect, expectTypeOf, it } from 'vitest';
 import { useLocalStorage, useSessionStorage } from '..';
 
@@ -79,20 +80,36 @@ describe.each([
 	});
 
 	it('should support updating the value with an updater function', () => {
-		// Act.
-		const { result } = renderHook(() =>
-			useStorage('test', 'initial-value'),
-		);
+		// Arrange.
+		const Component = () => {
+			const [count, setCount] = useStorage('count', 0);
 
+			return (
+				<button
+					onClick={() => {
+						setCount((prev) => prev + 1);
+						setCount((prev) => prev + 1);
+						setCount((prev) => prev + 1);
+					}}
+				>
+					{count}
+				</button>
+			);
+		};
+
+		render(<Component />);
+
+		const button = screen.getByRole('button');
+
+		// Assert.
+		expect(button).toHaveTextContent('0');
+
+		// Act.
 		act(() => {
-			result.current[1]((prev) => prev + '-updated');
+			button.click();
 		});
 
 		// Assert.
-		expect(result.current[0]).toBe('initial-value-updated');
-
-		expect(storage.getItem('test')).toBe(
-			JSON.stringify('initial-value-updated'),
-		);
+		expect(button).toHaveTextContent('3');
 	});
 });

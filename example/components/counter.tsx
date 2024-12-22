@@ -19,6 +19,17 @@ export function Counter({ title, storageKey }: CounterProps) {
 			>
 				Increment
 			</button>
+
+			<button
+				onClick={() => {
+					setCount((prev) => prev + 1);
+					setCount((prev) => prev + 1);
+					setCount((prev) => prev + 1);
+				}}
+			>
+				Increment By 3
+			</button>
+
 			<button
 				onClick={() => {
 					setCount((prev) => prev - 1);

@@ -14,10 +14,13 @@ export function createUseStorage(storageArea: Storage) {
 		const value = getItem<T>(key) ?? initialState;
 
 		const setValue = (valueOrUpdater: T | Updater<T>) => {
-			const newValue =
-				typeof valueOrUpdater === 'function'
-					? (valueOrUpdater as Updater<T>)(value)
-					: valueOrUpdater;
+			let newValue = valueOrUpdater;
+
+			if (typeof valueOrUpdater === 'function') {
+				const prevValue = getItem<T>(key) ?? initialState;
+
+				newValue = (valueOrUpdater as Updater<T>)(prevValue);
+			}
 
 			setItem(key, newValue);
 		};
